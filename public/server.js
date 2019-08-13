@@ -18,8 +18,10 @@ var server = http.createServer(function(req, res){
     if (req.url === '/') {
         res.writeHead(200, {'Content-Type': 'text/html'});
         var data = fs.readFileSync('./index.html');
+        db.getInv().then(function(result){
         res.write(data.toString())
         res.end();
+        }).catch(console.log);
 
     } else if (req.url === '/style.css'){
         res.writeHead(200, {'Content-Type': 'text/css'});
