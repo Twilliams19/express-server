@@ -2,8 +2,9 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 // var db = require('./db');
-//var promise = new Promise(function(resolve, reject)
-var server = http.createServer(function(req, res){
+var promise = new Promise(function(reslove, reject){
+settimeout(function(){
+// var server = http.createServer(function(req, res){
   
     
     var parUrl = url.parse(req.url, true);
