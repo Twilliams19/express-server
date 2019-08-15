@@ -1,6 +1,6 @@
 
 var mysql = require('mysql'),
-    // config  = require("./config.json"),
+    config  = require("./config.json"),
     email = "";
     
 
