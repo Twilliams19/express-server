@@ -1,34 +1,27 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var db = require('./db');
-// var promise = new Promise(function(reslove, reject){
-// settimeout(function(){
+// var db = require('./db');
+
 var server = http.createServer(function(req, res){
-//   console.log("get promise")
-    
+  
     var parUrl = url.parse(req.url, true);
     var pathname = '.';
     console.log('request was made: ' + req.url);
     
     if(parUrl.pathname === "/add") {
-        // db.insertCaughtData(parUrl.query.email);
-        console.log(parUrl.query.email);
+        db.insertCaughtData(parUrl.query.email);
     }
-   
+    
     if (req.url === '/') {
         res.writeHead(200, {'Content-Type': 'text/html'});
         var data = fs.readFileSync('./index.html');
-        db.getInv().then(function(result){
         res.write(data.toString())
         res.end();
-        }).catch(console.log);
-
     } else if (req.url === '/style.css'){
         res.writeHead(200, {'Content-Type': 'text/css'});
         var data = fs.readFileSync('./style.css');
         res.end(data.toString()); 
-
     } else if (req.url === '/reset.css'){
         res.writeHead(200, {'Content-Type': 'text/css'});
         var data = fs.readFileSync('./reset.css');
@@ -48,7 +41,6 @@ var server = http.createServer(function(req, res){
         res.writeHead(200, {'Content-Type': "text/plain"});
         var data = fs.readFileSync('./AJAX.js');
         res.end(data); 
-        
     } else {
         res.end("victory is not mine");
     }

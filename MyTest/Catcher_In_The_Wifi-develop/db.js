@@ -1,4 +1,3 @@
-
 var mysql = require('mysql'),
     config  = require("./config.json"),
     email = "";
@@ -6,12 +5,7 @@ var mysql = require('mysql'),
 
 
 function getCaughtData(){
-    var connection = mysql.createConnection({
-    	  host     : 'localhost',
-		  user     : 'root',
-		  password : 'password',
-		  database : 'catcher_in_the_wifi'
-    });
+    var connection = mysql.createConnection(config.db);
     connection.connect(function(err) {
         if(err) throw err;
         connection.query("SELECT * FROM caughtInfo", function(err, result, fields) {
@@ -23,12 +17,7 @@ function getCaughtData(){
 }
 
 function insertCaughtData(email) {
-    var connection = mysql.createConnection({
-      host     : 'localhost',
-	  user     : 'root',
-	  password : 'password',
-	  database : 'catcher_in_the_wifi'
-});
+    var connection = mysql.createConnection(config.db);
     connection.connect(function(err) {
         if (err) throw err;
         var sql = "INSERT INTO caughtInfo (email) VALUES ('" + email +"')";
@@ -39,8 +28,8 @@ function insertCaughtData(email) {
      })
     })
 }
-// getCaughtData(); //  test call
-// insertCaughtData(email); //test call
+getCaughtData(); //  test call
+insertCaughtData(email); //test call
 
 module.exports.getCaughtData = getCaughtData;
 module.exports.insertCaughtData = insertCaughtData;
