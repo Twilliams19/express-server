@@ -1,6 +1,7 @@
 {
   "name": "express-server",
   "version": "1.0.0",
+  "description": "1) Serving up websites and JSON data is easy with Express. In this lesson, you’ll learn how to create your first web server with Express. Once the server is up and running, users will be able to interact with your application via the browser.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,14 +14,5 @@
     "hbs": "^4.0.4",
     "mysql": "^2.17.1"
   },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Twilliams19/express-server.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Twilliams19/express-server/issues"
-  },
-  "homepage": "https://github.com/Twilliams19/express-server#readme",
-  "description": ""
+  "keywords": []
 }
